@@ -1,0 +1,63 @@
+body {
+  font-family: 'Quicksand', sans-serif;
+  text-align: left;
+  font-size: 1.8em;
+  padding-top: 70px;
+}
+
+h1 {
+  margin: 35px;
+}
+
+footer {
+  padding: 2%;
+  background-color: #101010;
+}
+
+a {
+  color: #D5D5D5;
+}
+
+a:hover {
+  color: #FFF;
+}
+
+.navbar {
+  margin-bottom: 0;
+  border-radius: 0;
+  background-color: #101010;
+  color: #FFFFFF;
+  padding: 0.5% 0;
+  font-size: 1.2em;
+  border: 0;
+}
+
+.navbar-inverse .navbar-nav .active a, .navbar-inverse .navbar-nav .active a:focus,
+  .navbar-inverse .navbar-nav .active a:hover {
+    color: #FFF;
+    background-color: #101010;
+  }
+
+  .navbar-inverse .navbar-nav li a {
+    color: #D5D5D5;
+  }
+
+.container {
+ max-width: 40%;
+}
+
+.list {
+  margin-bottom: 50px;
+}
+
+#quote {
+  padding-top: 20px;
+}
+
+#mcafee {
+  float: right;
+}
+
+#Definition {
+  margin-top: 35px;
+}

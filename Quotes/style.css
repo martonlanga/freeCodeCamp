@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css?family=Yantramanav:100');
+
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+}
+
+.intro {
+	height: 100%;
+	width: 100%;
+	margin: auto;
+	background-image: url("src/minimalist.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	display: table;
+	top: 0;
+}
+
+.intro .inner {
+	display: table-cell;
+	vertical-align: middle;
+	width: 100%;
+	max-width: none;
+}
+
+.content {
+	max-width: 1500px;
+	margin: 0 auto;
+	text-align: center;
+	padding-bottom: 5%;
+}
+
+.content h1 {
+	font-family: "Yantramanav", sans-serif;
+	font-size: 500%;
+	padding: 0px 3%;
+}
+
+.content a {
+	color: #303030;
+	text-decoration: none;
+	transition: all 0.5s;
+}
+
+.content a:hover {
+	color: #686868;
+	text-decoration: none;
+}
+
+#quote {
+	-webkit-animation-duration: 0.6s;
+}
+
+/*--- Media Queries --*/
+@media screen and (max-width: 900px) {
+	.content {
+		padding-bottom: 7%;
+	}
+	.content h1 {
+		font-size: 400%;
+	}
+}
+@media screen and (max-width: 768px) {
+	.content {
+		padding-bottom: 8.5%;
+	}
+	.content h1 {
+		font-size: 300%;
+	}
+}
+@media screen and (max-width: 480px) {
+	.content {
+		padding-bottom: 10%;
+	}
+	.content h1 {
+		font-size: 200%;
+	}
+}

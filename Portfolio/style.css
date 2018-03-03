@@ -1,0 +1,122 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  color: #EBECED;
+}
+
+h1 {
+  font-size: 6.5em;
+}
+
+h2 {
+  font-size: 5em;
+}
+
+footer {
+  padding: 1%;
+  background-color: #3E3E3B;
+  color: #D5D5D5;
+}
+
+::-webkit-scrollbar {
+  /* This is the magic bit */
+  display: none;
+}
+
+.scroll {
+  overflow-y: hidden;
+}
+
+.navbar {
+  margin-bottom: 0;
+  border-radius: 0;
+  background-color: #3E3E3B;
+  color: #FFFFFF;
+  padding: 0.5% 0;
+  font-size: 1.2em;
+  border: 0;
+}
+
+.navbar-inverse .navbar-nav .active a, .navbar-inverse .navbar-nav .active a:focus, .navbar-inverse .navbar-nav .active a:hover {
+  color: #FFF;
+  background-color: #3E3E3B;
+}
+
+.navbar-inverse .navbar-nav li a {
+  color: #D5D5D5;
+}
+
+.slide {
+  height: 1000px;
+  width: 100%;
+}
+
+.logo {
+  max-width: 50%;
+  margin: 1% auto;
+}
+
+.fa {
+  font-size: 5em;
+  color: white;
+}
+
+.faicons {
+  padding-top: 75px;
+}
+
+#Home {
+  background-color: #CBC5C1;
+  padding-top: 300px;
+}
+
+#Blockchain {
+  background-color: #A2AAB0;
+  padding-top: 170px;
+}
+
+#Contact {
+  background-color: #CBC5C1;
+  padding-top: 170px;
+  font-size: 2em;
+}
+
+#BlockchainSite {
+ width: 750px;
+}
+
+#logos{
+  padding-top: 70px;
+}
+
+@media only screen and (max-width: 500px) {
+  h1 {
+    font-size: 4.5em;
+  }
+  h2 {
+    font-size: 3em;
+  }
+  #BlockchainSite {
+    margin-top: 70px;
+    width: 250px;
+  }
+}
+
+@media only screen and (max-width: 900px) and (min-width: 500px) {
+  h1 {
+    font-size: 5.5em;
+  }
+  h2 {
+    font-size: 4em;
+  }
+  #BlockchainSite {
+    margin-top: 70px;
+    width: 300px;
+  }
+}
