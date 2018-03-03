@@ -131,6 +131,9 @@ function showData(location, temperature, condition) {
     case "Mist":
       skycons.add("icon", Skycons.FOG);
       break;
+    case "Haze":
+      skycons.add("icon", Skycons.FOG);
+      break;
   }
   skycons.play();
 }
