@@ -1,11 +1,23 @@
+
 $(document).ready(function() {
+
   var header = document.getElementById('location');
 
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(getPosition, showError);
+  var latCookie = Cookies.get('latitude');
+  var lonCookie = Cookies.get('longitude');
+
+  if (latCookie == null || lonCookie == null) {
+    $("#temperature").html('Please allow the location request.');
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(getPosition, showError);
+    } else {
+      throw "Navigator Geolocation is unavailable."
+    }
   } else {
-    throw "Navigator Geolocation is unavailable."
+    console.log("Cookies exist");
+    getWeatherData(latCookie, lonCookie);
   }
+
 
   $("#unit").change(function() {
     var currentTemp = $("#temperature").text().split(' ')[0];
@@ -77,6 +89,8 @@ function showError(error) {
 }
 
 function getPosition(position) {
+  Cookies.set("latitude", position.coords.latitude, { expires: 7 });
+  Cookies.set("longitude", position.coords.longitude, { expires: 7 });
   getWeatherData(position.coords.latitude, position.coords.longitude);
 }
 
