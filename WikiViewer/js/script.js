@@ -1,9 +1,10 @@
 $(document).ready(function() {
-  $('#input').keyup(function(e){
-      if(e.keyCode == 13 && $(this).val().length > 1)
-      {
-        console.log('123');
-      }
+  $('#input').keyup(function(e) {
+    if (e.keyCode == 13 && $(this).val().length > 1) {
+      getData($(this).val());
+      $(".search").css("top", "7%");
+      $(".search").css("transition", "0.4s");
+    }
   });
 });
 
@@ -15,4 +16,11 @@ function stopMovingBack() {
 
 function openRandom() {
   window.open("https://en.wikipedia.org/wiki/Special:Random");
+}
+
+function getData(search) {
+  $.getJSON('https://en.wikipedia.org/w/api.php?action=opensearch&format=json&origin=*&search=hungary',
+    function(data) {
+      console.log(data);
+    })
 }

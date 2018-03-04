@@ -5,12 +5,26 @@ body, html {
   height: 100%;
 }
 
+.content {
+  font-family: 'Cutive Mono', monospace;
+}
+
+.list {
+  font-family: 'Cutive Mono', monospace;
+  top: 8%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+h2 {
+  font-weight: 100;
+}
+
 .search {
-  position: absolute;
   top: 37%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-family: 'Cutive Mono', monospace;
+  position: absolute;
 }
 
 #input {
@@ -48,19 +62,20 @@ body, html {
 
 .effect:focus~.focus-border {
   width: 100%;
-  transition: 0.4s;
+  transition: 0.6s;
 }
 
 
 /* "Random Icon" label when not in focus */
 
 .effect~img {
-  height: 30px;
-  width: 30px;
+  height: 26px;
+  width: 26px;
   position: absolute;
   right: 0;
-  top: -2px;
+  top: 1px;
   transition: 0.3s;
+  filter: contrast(60);
 }
 
 
@@ -71,7 +86,7 @@ body, html {
   width: 20px;
   top: -20px;
   transition: 0.3s;
-  filter: grayscale(100%);
+  filter: contrast(80);
 }
 
 
