@@ -3,11 +3,6 @@ body, html {
   padding: 0;
   width: 100%;
   height: 100%;
-  font-family: "Anonymous Pro", sans-serif;
-}
-
-.content {
-
 }
 
 .search {
@@ -15,60 +10,116 @@ body, html {
   top: 37%;
   left: 50%;
   transform: translate(-50%, -50%);
+  font-family: 'Cutive Mono', monospace;
 }
 
 #input {
   color: #404040;
-  font-size: 130%;
-  letter-spacing: 0.8px;
-  font-family: "Anonymous Pro";
+  font-size: 160%;
+  font-family: 'Cutive Mono', monospace;
 }
 
 
-/* ANIMATE INPUT */
+/*Div box, bottom line*/
 
 .effect {
   border: 0;
-  padding: 4px 0;
-  border-bottom: 1px solid #666;
+  padding: 1px 0;
+  border-bottom: 1.6px solid #666;
   background-color: transparent;
-  width: 300px;
+  width: 600px;
 }
+
+
+/*Line when not focused*/
 
 .effect~.focus-border {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 0;
-  height: 1px;
+  height: 1.6px;
   background-color: #333;
   transition: 0.4s;
 }
+
+
+/*Line when focused*/
 
 .effect:focus~.focus-border {
   width: 100%;
   transition: 0.4s;
 }
 
+
+/* "Random Icon" label when not in focus */
+
+.effect~img {
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  right: 0;
+  top: -2px;
+  transition: 0.3s;
+}
+
+
+/* "Random Icon" label while focused */
+
+.effect:focus~img {
+  height: 20px;
+  width: 20px;
+  top: -20px;
+  transition: 0.3s;
+  filter: grayscale(100%);
+}
+
+
+/* "Search" label when not in focus */
+
 .effect~label {
   position: absolute;
   left: 0;
   width: 100%;
-  top: 12px;
+  top: 4px;
   color: #333;
   z-index: -1;
   transition: 0.3s;
   letter-spacing: 1px;
-  font
+  font-size: 160%;
 }
 
+
+/* "Search" label while focused */
+
 .effect:focus~label {
-  top: -12px;
+  top: -14px;
   transition: 0.3s;
   color: #4c4c4c;
-  font-size: 70%;
+  font-size: 90%;
 }
 
 :focus {
   outline: none;
+}
+
+
+/*--- Media Queries --*/
+
+@media screen and (max-width: 1600px) {
+  .effect {
+    width: 400px;
+  }
+}
+
+@media screen and (max-width: 1200px) {}
+
+@media screen and (max-width: 900px) {}
+
+@media screen and (max-width: 768px) {}
+
+@media screen and (max-width: 480px) {
+  .effect {
+    width: 200px;
+  }
 }
