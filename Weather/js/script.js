@@ -7,7 +7,7 @@ $(document).ready(function() {
   var lonCookie = Cookies.get('longitude');
 
   if (latCookie == null || lonCookie == null) {
-    $("#temperature").html('Please allow the location request.');
+    $("#location").html('Please allow the location request.');
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(getPosition, showError);
     } else {
