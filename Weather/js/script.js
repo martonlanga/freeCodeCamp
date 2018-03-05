@@ -14,7 +14,7 @@ $(document).ready(function() {
       throw "Navigator Geolocation is unavailable."
     }
   } else {
-    console.log("Cookies exist. Lat:" + latitude + "Long: " + longitude);
+    console.log("Cookies exist. Lat:" + latCookie + "Long: " + lonCookie);
     getWeatherData(latCookie, lonCookie);
   }
 
