@@ -14,7 +14,7 @@ $(document).ready(function() {
       throw "Navigator Geolocation is unavailable."
     }
   } else {
-    console.log("Cookies exist");
+    console.log("Cookies exist. Lat:" + latitude + "Long: " + longitude);
     getWeatherData(latCookie, lonCookie);
   }
 
@@ -64,6 +64,8 @@ function getWeatherData(latitude, longitude) {
   var endpoint = 'https://fcc-weather-api.glitch.me' +
     '/api/current?lon=' + longitude +
     '&lat=' + latitude;
+
+    console.log("Location: Lat:" + latitude + "Long: " + longitude);
 
   $.get(endpoint, function(data) {
     console.log(data);
