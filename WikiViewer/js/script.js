@@ -14,13 +14,21 @@ function stopMovingBack() {
   $(".effect~label").css("font-size", "90%");
 }
 
+//Open random article
 function openRandom() {
   window.open("https://en.wikipedia.org/wiki/Special:Random");
 }
 
+
 function getData(search) {
-  $.getJSON('https://en.wikipedia.org/w/api.php?action=opensearch&format=json&origin=*&search=hungary',
+  $.getJSON('https://en.wikipedia.org/w/api.php?action=opensearch&format=json&origin=*&search=' +
+    encodeURIComponent(search),
     function(data) {
       console.log(data);
-    })
+      processData(data);
+    });
+}
+
+function processData (data) {
+  
 }

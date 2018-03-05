@@ -39,7 +39,7 @@ h2 {
 .effect {
   border: 0;
   padding: 1px 0;
-  border-bottom: 1.6px solid #666;
+  border-bottom: 1px solid #666;
   background-color: transparent;
   width: 600px;
 }
@@ -118,6 +118,9 @@ h2 {
   outline: none;
 }
 
+.list-group {
+  
+}
 
 /*--- Media Queries --*/
 
