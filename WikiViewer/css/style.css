@@ -9,28 +9,22 @@ body, html {
   font-family: 'Cutive Mono', monospace;
 }
 
-.list {
-  font-family: 'Cutive Mono', monospace;
-  top: 8%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-h2 {
-  font-weight: 100;
-}
-
 .search {
   top: 37%;
   left: 50%;
   transform: translate(-50%, -50%);
   position: absolute;
+  font-weight: 100;
 }
 
 #input {
   color: #404040;
   font-size: 160%;
   font-family: 'Cutive Mono', monospace;
+}
+
+#label {
+  font-weight: 100;
 }
 
 
@@ -119,7 +113,7 @@ h2 {
 }
 
 .list-group {
-  
+
 }
 
 /*--- Media Queries --*/
