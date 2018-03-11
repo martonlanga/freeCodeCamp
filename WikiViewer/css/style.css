@@ -12,10 +12,22 @@ body, html {
 }
 
 .intro {
-  margin-bottom: 10%;
+  margin-top: 20%;
 }
 
 .list-group {
+  overflow-y: scroll;
+  margin-top: 3%;
+  margin-bottom: 1%;
+}
+
+.list-group p {
+  margin: 0;
+  padding: 0;
+}
+
+.list-group h3 {
+  font-size: 120%;
 }
 
 .search {
@@ -35,6 +47,7 @@ body, html {
   transition: 0.3s;
 }
 
+
 /*Input box, bottom line*/
 
 .input {
@@ -53,7 +66,7 @@ body, html {
   margin-top: -1px;
   display: inline-block;
   height: 1.5px;
-  width: 0;
+  width: 0%;
   transition: 0.6s;
 }
 
@@ -66,7 +79,6 @@ body, html {
   transition: 0.7s;
 }
 
-
 :focus {
   outline: none;
 }
@@ -75,52 +87,96 @@ body, html {
 /*--- Media Queries --*/
 
 @media screen and (max-width: 1600px) {
+  .intro {
+    margin-top: 25%;
+  }
   .search {
-    width: 400px;
-    font-size: 110%;
+    width: 450px;
+    font-size: 115%;
   }
   #random {
-    font-size: 75%;
+    font-size: 80%;
+  }
+  .list-group h3 {
+    font-size: 125%;
+  }
+  .list-group p {
+    font-size: 70%;
   }
 }
 
 @media screen and (max-width: 1200px) {
+  .intro {
+    margin-top: 30%;
+  }
   .search {
-    width: 350px;
-    font-size: 100%;
+    width: 400px;
+    font-size: 105%;
   }
   #random {
-    font-size: 70%;
+    font-size: 75%;
+  }
+  .list-group h3 {
+    font-size: 130%;
+  }
+  .list-group p {
+    font-size: 75%;
   }
 }
 
-
 @media screen and (max-width: 900px) {
+  .intro {
+    margin-top: 45%;
+  }
   .search {
-    width: 300px;
-    font-size: 90%;
+    width: 350px;
+    font-size: 95%;
   }
   #random {
-    font-size: 60%;
+    font-size: 65%;
+  }
+  .list-group h3 {
+    font-size: 135%;
+  }
+  .list-group p {
+    font-size: 80%;
   }
 }
 
 @media screen and (max-width: 768px) {
+  .intro {
+    margin-top: 50%;
+  }
   .search {
-    width: 250px;
-    font-size: 80%;
+    width: 300px;
+    font-size: 85%;
   }
   #random {
-    font-size: 50%;
+    font-size: 55%;
+  }
+  .list-group h3 {
+    font-size: 130%;
+  }
+  .list-group p {
+    font-size: 75%;
   }
 }
 
 @media screen and (max-width: 480px) {
+  .intro {
+    margin-top: 65%;
+  }
   .search {
-    width: 200px;
-    font-size: 70%;
+    width: 225px;
+    font-size: 90%;
   }
   #random {
-    font-size: 40%;
+    font-size: 50%;
+  }
+  .list-group h3 {
+    font-size: 135%;
+  }
+  .list-group p {
+    font-size: 80%;
   }
 }
