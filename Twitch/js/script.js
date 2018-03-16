@@ -9,12 +9,23 @@ class Stream {
     this.name = name;
     this.isOnline = isOnline;
     this.icon = isOnline ? icon : "src/twitch.png";
+    this.url = url;
   }
 }
 
+var streams = [];
 var response = [];
 
 $(document).ready(function() {
+
+  $('.btn').click(function(evt) {
+    evt.preventDefault();
+
+    $(this).addClass('btn-active').siblings().removeClass('btn-active');
+
+    filterData($(this).text().replace(/\s+/g, ''))
+  });
+
 
   /*
     var response = [];
@@ -129,19 +140,54 @@ $(document).ready(function() {
   ];
 
   console.log(response);
-  processData(response)
+  processData(response);
 });
 
 function processData(res) {
-  var streams = [];
   res.forEach(function(r) {
     console.log(r);
     if (!r.error) {
-      streams.push(new Stream(r.stream != null ? r.stream.display_name : r.display_name, r.stream !=
-        null,
-        r.stream != null ? r.stream.logo : "", r._links.self));
+      streams.push(
+        new Stream(r.stream != null ? r.stream.display_name : r.display_name,
+          r.stream != null,
+          r.stream != null ? r.stream.logo : "",
+          r.stream != null ? r.stream.url : r._links.self));
     }
   });
-
   console.log(streams);
+
+  filterData("All");
+}
+
+function filterData(filter) {
+  switch (filter) {
+    case "Online":
+    listItems(streams.filter(function (s) {
+      return s.isOnline;
+    }));
+      break;
+    case "Offline":
+      listItems(streams.filter(function (s) {
+        return !s.isOnline;
+      }));
+      break;
+    default:
+      listItems(streams);
+  }
+}
+
+function listItems(items) {
+  $(".list-group").html("");
+  items.forEach(function(item) {
+    var status = item.isOnline ? "Online" : "Offline";
+    $(".list-group").append("<a href=\"" + item.url +
+      "\" class=\"list-group-item list-group-item-action\">" +
+      "<div class = \"d-flex w-100 justify-content-between align-self-center\">" +
+      "<img class = \"icon align-self-center\" src=\"" + item.icon + "\"/>" +
+      "<h3 class = \"align-self-center\" >" + item.name + "</h3>" +
+      "<h5 class = \"align-self-center\">" + status + "</h5>" +
+      "</div>" +
+      "</a>")
+  });
+
 }
