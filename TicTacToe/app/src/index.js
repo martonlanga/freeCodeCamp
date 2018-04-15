@@ -52,35 +52,125 @@ class Game extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      squares: Array(9).fill(null),
+      squares: Array(9).fill(null) /*['X', null, 'X', 'O', 'X', 'O', null, 'O', null]*/,
       stepNumber: 0,
       /*xIsNext: true,*/
     };
   }
 
-  handleClick(i) {
+  async handleClick(i) {
     const squares = this.state.squares;
+    let stepNumber = this.state.stepNumber + 1;
 
+    let Os = squares.filter(s => s === 'O');
+    let Xs = squares.filter(s => s === 'X');
+    console.log(Os.length);
+    console.log(Xs.length);
     //If there is already a winner, or the clicked square is already used, return
-    if (calculateWinner(squares) || squares[i]) {
+    if (calculateWinner(squares) || squares[i] || Os.length > Xs.length) {
       return;
     }
 
-    squares[i] = /*this.state.xIsNext ? 'X' : 'O'*/ 'X';
+    squares[i] = /*this.state.xIsNext ? 'X' : 'O'*/ 'O';
     this.setState({
       squares: squares,
-      stepNumber: this.state.stepNumber + 1,
+      stepNumber: stepNumber,
       /*xIsNext: !this.state.xIsNext,*/
     });
 
-    aiTurn(squares);
-  }
+    await sleep(500);
+    debugger;
+    let aiIndex = aiTurn(stepNumber);
+    squares[aiIndex] = 'X';
 
-  aiTurn(squares) {
-    //TODO implement MINIMAX algorithm
+    this.setState({
+      squares: squares,
+      stepNumber: stepNumber,
+      /*xIsNext: !this.state.xIsNext,*/
+    });
 
-    if (calculateWinner(squares) || squares[i]) {
-      return;
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    function aiTurn(stepNumber) {
+
+      if (calculateWinner(squares) || stepNumber === 5) {
+        return;
+      }
+
+      const hu = 'O';
+      const ai = 'X';
+
+      function emptySquares() {
+        let arr = [];
+        for (let s = 0; s < squares.length; s++) {
+          if (squares[s] === null) {
+            arr.push(s);
+          }
+        }
+        return arr;
+      }
+
+      return (minimax(squares, ai)).index;
+
+      function minimax(newSquares, player) {
+        let available = emptySquares(newSquares);
+        const winner = calculateWinner(newSquares);
+
+        if (winner) {return winner === 'X' ?
+          {score: 10} :
+          {score: -10};
+        } else if (available.length === 0) {
+          return {
+            score: 0
+          };
+        }
+
+        let moves = [];
+
+        for (let j = 0; j < available.length; j++) {
+
+          let move = {};
+          move.index = available[j];
+
+          newSquares[available[j]] = player;
+
+          if (player === ai) {
+            let result = minimax(newSquares, hu);
+            move.score = result.score;
+          } else {
+            let result = minimax(newSquares, ai);
+            move.score = result.score;
+          }
+
+          newSquares[available[j]] = null;
+
+          moves.push(move);
+        }
+
+        let bestMove;
+        if (player === ai) {
+          let bestScore = -10000;
+          for (let j = 0; j < moves.length; j++) {
+            if (moves[j].score > bestScore) {
+              bestScore = moves[j].score;
+              bestMove = j;
+            }
+          }
+        } else {
+          let bestScore = 10000;
+          for (let j = 0; j < moves.length; j++) {
+            if (moves[j].score < bestScore) {
+              bestScore = moves[j].score;
+              bestMove = j;
+            }
+          }
+        }
+
+        return moves[bestMove];
+      }
+
     }
   }
 
@@ -96,11 +186,11 @@ class Game extends React.Component {
     const squares = this.state.squares;
     const winner = calculateWinner(squares);
 
-    let status;
+    let status = 'TIC TAC TOE';
     if (winner) {
       status = 'Winner: ' + winner;
-    } else {
-      status = 'Next player: ' /*+ (this.state.xIsNext ? 'X' : 'O')*/;
+    } else if (this.state.stepNumber === 5) {
+      status = 'Draw' /*+ (this.state.xIsNext ? 'X' : 'O')*/;
     }
 
     return (
