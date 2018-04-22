@@ -9,4 +9,4 @@ const Display = () => {
   );
 };
 
-export default Button;
+export default Display;
