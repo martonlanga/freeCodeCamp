@@ -12,8 +12,12 @@ class Calculator extends React.Component {
   render() {
     return (
       <div className='Calculator'>
-        <Display></Display>
-        <Buttons onClick={(value) => this.handleClick(value)}></Buttons>
+        <div className='display-grid'>
+          <Display></Display>
+        </div>
+        <div className='buttons-grid'>
+          <Buttons onClick={(value) => this.handleClick(value)}></Buttons>
+        </div>
       </div>
     );
   }

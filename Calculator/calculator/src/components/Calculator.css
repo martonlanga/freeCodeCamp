@@ -1,5 +1,18 @@
 .Calculator {
   width: 504px;
   height: 896px;
-  background-color: blue;
+  background-color: grey;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto auto auto;
+}
+
+.display-grid {
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.buttons-grid {
+  grid-row-start: 2;
+  grid-row-end: 4;
 }
