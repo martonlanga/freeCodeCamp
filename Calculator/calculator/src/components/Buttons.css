@@ -1,0 +1,20 @@
+.Buttons {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  height: 100%;
+}
+
+.grid-1 {
+  grid-column-start: 1;
+  grid-column-end: 4;
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.grid-2 {
+  grid-column-start: 4;
+  grid-column-end: 5;
+  display: grid;
+  grid-template-columns: auto;
+
+}
