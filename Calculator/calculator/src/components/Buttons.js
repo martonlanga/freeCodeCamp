@@ -1,9 +1,6 @@
 import React from 'react';
 import Button from './Button';
-<<<<<<< HEAD
-=======
 import './Buttons.css';
->>>>>>> develop
 
 class Buttons extends React.Component {
 
@@ -19,13 +16,6 @@ class Buttons extends React.Component {
   render() {
     return (
       <div className='Buttons'>
-<<<<<<< HEAD
-        {this.renderButton(0)}
-        {this.renderButton(2)}
-        {this.renderButton(3)}
-        {this.renderButton(4)}
-        {this.renderButton(6)}
-=======
         <div className='grid-1'>
           {this.renderButton(7)}
           {this.renderButton(8)}
@@ -47,7 +37,6 @@ class Buttons extends React.Component {
           {this.renderButton('+')}
           {this.renderButton('-')}
         </div>
->>>>>>> develop
       </div>
     );
   }
