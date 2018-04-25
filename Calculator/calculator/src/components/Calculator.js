@@ -9,20 +9,31 @@ class Calculator extends React.Component {
     super();
 
     this.state = ({
-      value: '',
+      value: String.fromCharCode(160),
     });
   }
 
   handleClick(value) {
-    console.log(value);
     const oldValue = this.state.value;
-    this.setState({
-      value: oldValue + value,
-    });
+    const setValue = (value) =>
+              this.setState({
+                value: value,
+              });
+
+    if (Number(value) || value === 0) {
+      setValue(oldValue + value);
+    } else {
+      switch (value) {
+        case 'DEL':
+          setValue(String.fromCharCode(160));
+          break;
+        default:
+          console.log(value);
+      }
+    }
   }
 
   render() {
-    console.log(this.state);
     return (
       <div className='Calculator'>
         <div className='display-grid'>
