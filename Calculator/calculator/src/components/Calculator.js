@@ -9,7 +9,7 @@ class Calculator extends React.Component {
     super();
 
     this.state = ({
-      value: String.fromCharCode(160),
+      value: '',
     });
   }
 
@@ -25,7 +25,7 @@ class Calculator extends React.Component {
     } else {
       switch (value) {
         case 'DEL':
-          setValue(String.fromCharCode(160));
+          setValue('');
           break;
         default:
           console.log(value);

@@ -9,7 +9,11 @@ class Display extends React.Component {
   render() {
     return (
       <div className='Display'>
-        <div className='display-result'>{this.props.value}</div>
+        <input
+          className='Display-result'
+          type='text'
+          value={this.props.value}
+        />
       </div>
     );
   }

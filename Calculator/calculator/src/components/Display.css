@@ -4,5 +4,12 @@
   align-items: center;
   justify-content: flex-end;
   padding: 20px;
+}
+
+.Display-result {
   font-size: 5em;
+  width: 100%;
+  border: none;
+  outline: none;
+  direction: rtl;
 }
