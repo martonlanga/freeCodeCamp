@@ -2,6 +2,8 @@
   display: grid;
   grid-template-columns: auto auto auto auto;
   height: 100%;
+  color: white;
+  font-size: 2em;
 }
 
 .grid-1 {
@@ -16,5 +18,4 @@
   grid-column-end: 5;
   display: grid;
   grid-template-columns: auto;
-
 }

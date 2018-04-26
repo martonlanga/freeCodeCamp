@@ -4,8 +4,25 @@
   justify-content: center;
   align-items: center;
   font-size: 1.5em;
+  cursor: pointer;
 }
 
-.Button:hover {
-  background-color: #F2F3F4;
+.darkGrey {
+  background-color: rgb(62,66,69, 1);
+  transition: 0.5s;
+}
+
+.lightGrey {
+  background-color: rgb(95,99,104, 1);
+  transition: 0.5s;
+}
+
+.darkGrey:hover {
+  background-color: rgb(62,66,69, 0.9);
+  transition: 0.5s;
+}
+
+.lightGrey:hover {
+  background-color: rgb(95,99,104, 0.9);
+  transition: 0.5s;
 }

@@ -7,9 +7,14 @@
 }
 
 .Display-result {
-  font-size: 5em;
+  font-family: "Roboto", sans-serif;
+  font-size: 6em;
   width: 100%;
   border: none;
   outline: none;
   direction: rtl;
+}
+
+input:disabled {
+  background: none;
 }

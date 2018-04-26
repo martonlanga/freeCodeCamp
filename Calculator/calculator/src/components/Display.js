@@ -13,6 +13,7 @@ class Display extends React.Component {
           className='Display-result'
           type='text'
           value={this.props.value}
+          disabled
         />
       </div>
     );

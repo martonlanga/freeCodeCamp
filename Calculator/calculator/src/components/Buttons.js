@@ -4,11 +4,13 @@ import './Buttons.css';
 
 class Buttons extends React.Component {
 
-  renderButton(value) {
+  renderButton(value, color) {
+    const classes = color + ' Button';
     return (
       <Button
         value={value}
         onClick={() => this.props.onClick(value)}
+        classes={classes}
       />
     );
   }
@@ -17,25 +19,25 @@ class Buttons extends React.Component {
     return (
       <div className='Buttons'>
         <div className='grid-1'>
-          {this.renderButton(7)}
-          {this.renderButton(8)}
-          {this.renderButton(9)}
-          {this.renderButton(4)}
-          {this.renderButton(5)}
-          {this.renderButton(6)}
-          {this.renderButton(1)}
-          {this.renderButton(2)}
-          {this.renderButton(3)}
-          {this.renderButton('.')}
-          {this.renderButton(0)}
-          {this.renderButton('=')}
+          {this.renderButton(7, 'darkGrey')}
+          {this.renderButton(8, 'darkGrey')}
+          {this.renderButton(9, 'darkGrey')}
+          {this.renderButton(4, 'darkGrey')}
+          {this.renderButton(5, 'darkGrey')}
+          {this.renderButton(6, 'darkGrey')}
+          {this.renderButton(1, 'darkGrey')}
+          {this.renderButton(2, 'darkGrey')}
+          {this.renderButton(3, 'darkGrey')}
+          {this.renderButton('.', 'darkGrey')}
+          {this.renderButton(0, 'darkGrey')}
+          {this.renderButton('=', 'darkGrey')}
         </div>
         <div className='grid-2'>
-          {this.renderButton('DEL')}
-          {this.renderButton('/')}
-          {this.renderButton('x')}
-          {this.renderButton('+')}
-          {this.renderButton('-')}
+          {this.renderButton('DEL', 'lightGrey')}
+          {this.renderButton('/', 'lightGrey')}
+          {this.renderButton('x', 'lightGrey')}
+          {this.renderButton('+', 'lightGrey')}
+          {this.renderButton('-', 'lightGrey')}
         </div>
       </div>
     );

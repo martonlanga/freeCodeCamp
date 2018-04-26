@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Roboto:100');
 
 .Calculator {
   width: 504px;
   height: 896px;
   display: grid;
   grid-template-columns: auto;
-  grid-template-rows: auto auto auto auto;
+  grid-template-rows: auto auto auto auto auto auto;
   font-family: 'Roboto', sans-serif;
   border: 1px solid black;
 }
@@ -17,5 +17,5 @@
 
 .buttons-grid {
   grid-row-start: 3;
-  grid-row-end: 5;
+  grid-row-end: 7;
 }
