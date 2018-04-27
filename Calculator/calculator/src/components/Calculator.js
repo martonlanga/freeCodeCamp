@@ -9,35 +9,74 @@ class Calculator extends React.Component {
     super();
 
     this.state = ({
-      value: '',
+      number: '',
+      oldNumber: '',
+      display: '',
+      operator: null,
     });
   }
 
   handleClick(value) {
-    const oldValue = this.state.value;
-    const setValue = (value) =>
+    const {oldNumber, number, operator} = this.state;
+    const setNumber = (number) =>
               this.setState({
-                value: value,
+                number,
+              });
+    const setDisplay = (display) =>
+              this.setState({
+                display,
+              });
+    const setOldNumber = (oldNumber) =>
+              this.setState({
+                oldNumber
+              });
+    const setOperator = (operator) =>
+              this.setState({
+                operator,
               });
 
-    if (Number(value) || value === 0) {
-      setValue(oldValue + value);
+    if (Number(value) || value === 0 || value === '.') {
+      // Append digits to number
+      // TODO if there is already a dot in the number, do not allow anotehr one
+      // Round irrationals (or set max length)
+      // Dot align on left
+      const display = number + value;
+      setNumber(display);
+      setDisplay(display);
     } else {
       switch (value) {
         case 'DEL':
-          setValue('');
+          setNumber('');
+          setDisplay('');
+          setOldNumber('');
+          setOperator(null);
+          break;
+        case '=':
+          if (oldNumber && number) {
+            const result = calculate(oldNumber, number, operator);
+            setDisplay(result);
+            setOldNumber(result);
+            setOperator(null);
+            setNumber('');
+          }
           break;
         default:
-          console.log(value);
+          setOperator(value);
+          if (number) {
+            setOldNumber(number);
+          }
+          setNumber('');
+          break;
       }
     }
   }
 
   render() {
+    console.log(this.state);
     return (
       <div className='Calculator'>
         <div className='display-grid'>
-          <Display value={this.state.value}></Display>
+          <Display value={this.state.display}></Display>
         </div>
         <div className='buttons-grid'>
           <Buttons onClick={(value) => this.handleClick(value)}></Buttons>
@@ -46,5 +85,23 @@ class Calculator extends React.Component {
     );
   }
 }
+
+const calculate = (oldNumber, number, operator) => {
+  oldNumber = Number(oldNumber);
+  number = Number(number);
+  switch (operator) {
+    case '/':
+      return oldNumber / number + '';
+    case 'x':
+      return oldNumber * number + '';
+    case '+':
+      return oldNumber + number + '';
+    case '-':
+      return oldNumber - number + '';
+    default:
+      console.log('Error');
+      return;
+  }
+};
 
 export default Calculator;

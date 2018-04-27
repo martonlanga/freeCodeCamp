@@ -4,6 +4,8 @@
   height: 100%;
   color: white;
   font-size: 2em;
+  margin: 0;
+  padding: 0;
 }
 
 .grid-1 {
@@ -11,6 +13,8 @@
   grid-column-end: 4;
   display: grid;
   grid-template-columns: auto auto auto;
+  margin: 0;
+  padding: 0;
 }
 
 .grid-2 {
@@ -18,4 +22,6 @@
   grid-column-end: 5;
   display: grid;
   grid-template-columns: auto;
+  margin: 0;
+  padding: 0;
 }

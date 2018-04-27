@@ -3,7 +3,6 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  padding: 20px;
 }
 
 .Display-result {
@@ -13,6 +12,7 @@
   border: none;
   outline: none;
   direction: rtl;
+  padding: 20px;
 }
 
 input:disabled {
