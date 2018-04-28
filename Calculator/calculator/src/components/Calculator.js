@@ -36,10 +36,9 @@ class Calculator extends React.Component {
               });
 
     if (Number(value) || value === 0 || value === '.') {
-      // Append digits to number
-      // TODO if there is already a dot in the number, do not allow anotehr one
-      // Round irrationals (or set max length)
-      // Dot align on left
+      if (value === '.' && number.indexOf('.') !== -1) {
+        return;
+      }
       const display = number + value;
       setNumber(display);
       setDisplay(display);
@@ -61,11 +60,13 @@ class Calculator extends React.Component {
           }
           break;
         default:
-          setOperator(value);
+          if (!operator) {
+            setOperator(value);
+            setNumber('');
+          }
           if (number) {
             setOldNumber(number);
           }
-          setNumber('');
           break;
       }
     }

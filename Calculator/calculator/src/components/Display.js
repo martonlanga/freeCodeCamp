@@ -7,12 +7,19 @@ class Display extends React.Component {
   }
 
   render() {
+    let val = this.props.value;
+    const resultSyle = val.length > 8 ?
+      {fontSize: '3em',} :
+      {fontSize: '6em',};
+    console.log(resultSyle);
+
     return (
       <div className='Display'>
         <input
           className='Display-result'
+          style={resultSyle}
           type='text'
-          value={this.props.value}
+          value={val}
           disabled
         />
       </div>
