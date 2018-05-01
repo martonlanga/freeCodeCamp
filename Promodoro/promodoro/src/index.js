@@ -1,6 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Promodoro from './components/Promodoro';
+import './index.css';
 
-ReactDOM.render(<Promodoro />, document.getElementById('root'));
+const App = () => {
+  return (
+    <MuiThemeProvider>
+      <Promodoro />
+    </MuiThemeProvider>
+  );
+};
+
+ReactDOM.render(<App />, document.getElementById('root'));

@@ -3,10 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "material-ui": "^0.20.0",
+    "progressbar.js": "^1.0.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
-    "react-progressbar.js": "^0.2.0",
-    "react-scripts": "1.1.4"
+    "react-progress-bar.js": "^0.2.3",
+    "react-scripts": "1.1.4",
+    "uninstall": "0.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

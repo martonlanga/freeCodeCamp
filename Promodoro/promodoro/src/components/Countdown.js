@@ -1,5 +1,10 @@
 import React from 'react';
 import './Countdown.css';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import PlayArrow from 'material-ui/svg-icons/av/play-arrow';
+import Pause from 'material-ui/svg-icons/av/pause';
+const ProgressBar = require('react-progress-bar.js');
+const Circle = ProgressBar.Circle;
 
 class Countdown extends React.Component {
   constructor(props) {
@@ -61,11 +66,21 @@ class Countdown extends React.Component {
 
   render() {
     return (
-      <div>
-        {this.state.formattedTime}
-        <button
+      <div className='countdown'>
+        <div>
+          <Circle
+            progress={0.5}
+            text={this.state.formattedTime}
+            className='circle'
+          >
+            <div>asd</div>
+        </Circle>
+        </div>
+        <FloatingActionButton
           className='button-start'
-          onClick={this.startCountdown}>Start</button>
+          onClick={this.startCountdown}>
+          <PlayArrow />
+        </FloatingActionButton>
       </div>
     );
   }

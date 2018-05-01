@@ -1,0 +1,12 @@
+.countdown {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.circle {
+  width: '200px';
+  height: '200px';
+}
