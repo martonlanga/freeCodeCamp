@@ -14,6 +14,7 @@ class Countdown extends React.Component {
     const isWorking = true;
     const remainingSeconds = this.timeToSeconds(workTime);
     const formattedTime = this.formattedTime(remainingSeconds);
+    const isRunning = false;
 
     this.state = {
       remainingSeconds,
@@ -21,14 +22,26 @@ class Countdown extends React.Component {
       isWorking,
       workTime,
       breakTime,
+      isRunning,
     };
 
-    this.startCountdown = this.startCountdown.bind(this);
+    this.playPause = this.playPause.bind(this);
     this.countdown = this.countdown.bind(this);
   }
 
-  startCountdown() {
-    this.timerId = setInterval(this.countdown, 1000);
+  playPause() {
+    if (this.timerId) {
+      clearInterval(this.timerId);
+      this.timerId = 0;
+      this.setState({
+        isRunning: false,
+      });
+    } else {
+      this.timerId = setInterval(this.countdown, 1000);
+      this.setState({
+        isRunning: true,
+      });
+    }
   }
 
   formattedTime(seconds) {
@@ -60,16 +73,23 @@ class Countdown extends React.Component {
     }
   }
 
+  progress() {
+    const {isWorking, remainingSeconds, workTime, breakTime} = this.state;
+    return isWorking ?
+      (remainingSeconds / 60 / workTime) : (remainingSeconds / 60 / breakTime);
+  }
+
   componentWillUnMount() {
     clearInterval(this.timerId);
   }
 
   render() {
+    const {isRunning} = this.state;
     return (
       <div className='countdown'>
         <div>
           <Circle
-            progress={0.5}
+            progress={this.progress()}
             text={this.state.formattedTime}
             className='circle'
           >
@@ -77,9 +97,9 @@ class Countdown extends React.Component {
         </Circle>
         </div>
         <FloatingActionButton
-          className='button-start'
-          onClick={this.startCountdown}>
-          <PlayArrow />
+          className='button-action'
+          onClick={this.playPause}>
+          {isRunning ? <Pause /> : <PlayArrow />}
         </FloatingActionButton>
       </div>
     );
