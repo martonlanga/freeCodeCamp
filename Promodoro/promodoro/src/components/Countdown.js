@@ -3,8 +3,7 @@ import './Countdown.css';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import PlayArrow from 'material-ui/svg-icons/av/play-arrow';
 import Pause from 'material-ui/svg-icons/av/pause';
-const ProgressBar = require('react-progress-bar.js');
-const Circle = ProgressBar.Circle;
+import CircularProgress from 'material-ui/CircularProgress';
 
 class Countdown extends React.Component {
   constructor(props) {
@@ -88,13 +87,15 @@ class Countdown extends React.Component {
     return (
       <div className='countdown'>
         <div>
-          <Circle
-            progress={this.progress()}
-            text={this.state.formattedTime}
-            className='circle'
+          <CircularProgress
+            max={1}
+            min={0}
+            mode='determinate'
+            value={this.progress()}
           >
-            <div>asd</div>
-        </Circle>
+            <h1>asd</h1>
+          </CircularProgress>
+
         </div>
         <FloatingActionButton
           className='button-action'

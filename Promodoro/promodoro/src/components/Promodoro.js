@@ -11,21 +11,24 @@ class Promodoro extends React.Component {
       workTime: '1',
       breakTime: '5',
     };
+
+    this.changeTime = this.changeTime.bind(this);
   }
 
   componentDidMount() {
 
   }
 
-  onClickSettings(asd) {
+  changeTime(asd) {
     console.log(asd);
   }
 
   render() {
     const {workTime, breakTime} = this.state;
+    const {changeTime} = this;
     return (
       <div className='promodoro'>
-        <CustomAppBar onClickEvent={() => this.onClickSettings()} />
+        <CustomAppBar onChangeTime={changeTime} />
         <Countdown
           breakTime={breakTime}
           workTime={workTime}
