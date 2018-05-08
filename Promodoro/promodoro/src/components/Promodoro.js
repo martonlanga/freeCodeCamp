@@ -8,7 +8,7 @@ class Promodoro extends React.Component {
     super();
 
     this.state = {
-      workTime: '1',
+      workTime: '25',
       breakTime: '5',
     };
 
