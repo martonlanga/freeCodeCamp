@@ -9,6 +9,7 @@ import AlarmIcon from 'material-ui/svg-icons/action/alarm';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import ContentRemove from 'material-ui/svg-icons/content/remove';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
+import Toggle from 'material-ui/Toggle';
 
 const CustomAppBar = (props) => {
   const {onChangeTime} = props;
@@ -25,9 +26,9 @@ const CustomAppBar = (props) => {
           targetOrigin={{horizontal: 'right', vertical: 'top'}}
           anchorOrigin={{horizontal: 'right', vertical: 'top'}}
         >
-          <Add onChangeTime={onChangeTime}/>
-          <MenuItem primaryText='Break time' />
-          <MenuItem primaryText='Dark theme' />
+          <MenuItem primaryText='Work time' disabled='true'><Add onChangeTime={onChangeTime}/></MenuItem>
+          <MenuItem primaryText='Break time' disabled='true'><Add onChangeTime={onChangeTime}/></MenuItem>
+          <MenuItem disabled='true'><Toggle label='Dark theme' /></MenuItem>
         </IconMenu>
       }
     />
