@@ -19,8 +19,16 @@ class Promodoro extends React.Component {
 
   }
 
-  changeTime(asd) {
-    console.log(asd);
+  changeTime(increaseTime, isWorkTime) {
+    if (isWorkTime) {
+      let {workTime} = this.state;
+      increaseTime ? workTime++ : workTime--;
+      this.setState({workTime});
+    } else {
+      let {breakTime} = this.state;
+      increaseTime ? breakTime++ : breakTime--;
+      this.setState({breakTime});
+    }
   }
 
   render() {
@@ -28,7 +36,11 @@ class Promodoro extends React.Component {
     const {changeTime} = this;
     return (
       <div className='promodoro'>
-        <CustomAppBar onChangeTime={changeTime} />
+        <CustomAppBar
+          onChangeTime={changeTime}
+          breakTime={breakTime}
+          workTime={workTime}
+        />
         <Countdown
           breakTime={breakTime}
           workTime={workTime}
