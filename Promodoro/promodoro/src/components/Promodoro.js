@@ -39,7 +39,7 @@ class Promodoro extends React.Component {
     const {changeTime} = this;
 
     return (
-      <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+      <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)} >
       <div className='promodoro'>
         <CustomAppBar
           onChangeTime={changeTime}
