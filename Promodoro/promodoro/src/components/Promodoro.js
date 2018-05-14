@@ -9,17 +9,13 @@ class Promodoro extends React.Component {
     super();
 
     this.state = {
-      workTime: '1',
-      breakTime: '2',
+      workTime: '0.1',
+      breakTime: '0.1',
       isDarkTheme: false,
     };
 
     this.changeTime = this.changeTime.bind(this);
     this.switchTheme = this.switchTheme.bind(this);
-  }
-
-  componentDidMount() {
-
   }
 
   changeTime(increaseTime, isWorkTime) {

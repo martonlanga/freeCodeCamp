@@ -13,12 +13,15 @@ import Toggle from 'material-ui/Toggle';
 const CustomAppBar = (props) => {
   const {onChangeTime, workTime, breakTime, switchTheme, isDarkTheme} = props;
   const color = isDarkTheme ? '#424242' : '#FAFAFA';
+  const textColor = isDarkTheme ? '#FAFAFA' : '#424242';
+  //TODO: change textcolor to light when darktheme + notification
   return (
     <AppBar
-      title='Promodoro Clock'
-      className='appbar'
       style={{backgroundColor: color}}
-      iconElementLeft={<AlarmIcon color={grey800} />}
+      title='Promodoro Clock'
+      titleStyle={{color: textColor}}
+      className='appbar'
+      iconElementLeft={<AlarmIcon color={textColor}/>}
       iconElementRight={
         <IconMenu
           iconButtonElement={
@@ -38,7 +41,11 @@ const CustomAppBar = (props) => {
                isWorkTime={false}
                onChangeTime={onChangeTime}
              />
-            <Toggle label='Dark theme' onToggle={switchTheme} />
+            <Toggle
+              label='Dark theme'
+              onToggle={switchTheme}
+              trackSwitchedStyle={{backgroundColor: '#424242'}}
+            />
           </div>
         </IconMenu>
       }

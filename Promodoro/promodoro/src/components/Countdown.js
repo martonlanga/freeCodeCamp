@@ -7,6 +7,9 @@ import WorkIcon from 'material-ui/svg-icons/hardware/laptop';
 import BreakIcon from 'material-ui/svg-icons/maps/local-cafe.js';
 import CircularProgress from 'material-ui/CircularProgress';
 import MediaQuery from 'react-responsive';
+import ReactNotifications from 'react-browser-notifications';
+import WorkLogo from './work.png';
+import BreakLogo from './break.png';
 
 class Countdown extends React.Component {
   constructor(props) {
@@ -37,6 +40,8 @@ class Countdown extends React.Component {
 
     this.playPause = this.playPause.bind(this);
     this.countdown = this.countdown.bind(this);
+    this.showNotification = this.showNotification.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   playPause() {
@@ -70,7 +75,19 @@ class Countdown extends React.Component {
         isWorking: !isWorking,
         remainingSeconds,
       });
+      this.showNotification();
     }
+  }
+
+  showNotification() {
+    if (this.n.supported()) {
+      this.n.show();
+    }
+  }
+
+  handleClick(event) {
+    window.focus();
+    this.n.close(event.target.tag);
   }
 
   progress() {
@@ -84,6 +101,7 @@ class Countdown extends React.Component {
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
+    //TODO if change break time - dont update progress, don't allow less than 0
     const {formatTime, timeToSeconds} = prevState;
     const workTime = nextProps.workTime;
     const breakTime = nextProps.breakTime;
@@ -126,6 +144,9 @@ class Countdown extends React.Component {
   render() {
     const {isRunning, formattedTime, isDarkTheme, isWorking} = this.state;
     const color = isDarkTheme ? '#FAFAFA' : '#424242';
+    const NotificationLogo = isWorking ? WorkLogo : BreakLogo;
+    const NotificationTitle = isWorking ? 'Break time over' : 'Work time over';
+    const NotificationBody = isWorking ? 'Start working now' : 'Enjoy your break';
     return (
       <div className='countdown'>
         <MediaQuery query='(min-device-width: 1224px)'>
@@ -140,7 +161,9 @@ class Countdown extends React.Component {
             >
             </CircularProgress>
           </div>
-          <span style={{fontSize: '2em', color: color}}>Working</span>
+          <span style={{fontSize: '2em', color: color}}>
+            {isWorking ? 'Working' : 'Break'}
+          </span>
           {isWorking ?
             <WorkIcon
               style={{height: '15vh', width: '15vw'}}
@@ -174,7 +197,9 @@ class Countdown extends React.Component {
             >
             </CircularProgress>
           </div>
-          <span style={{fontSize: '1.5em', color: color}}>Working</span>
+          <span style={{fontSize: '1.5em', color: color}}>
+            {isWorking ? 'Working' : 'Break'}
+          </span>
           {isWorking ?
             <WorkIcon
               style={{height: '8vh', width: '8vw'}}
@@ -195,7 +220,15 @@ class Countdown extends React.Component {
             {isRunning ? <Pause /> : <PlayArrow />}
           </FloatingActionButton>
         </MediaQuery>
-
+        <ReactNotifications
+          onRef={ref => (this.n = ref)}
+          title={NotificationTitle}
+          body={NotificationBody}
+          tag='abcdef'
+          icon={NotificationLogo}
+          timeout='4000'
+          onClick={event => this.handleClick(event)}
+        />
       </div>
     );
   }
