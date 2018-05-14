@@ -3,20 +3,22 @@ import './Countdown.css';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import PlayArrow from 'material-ui/svg-icons/av/play-arrow';
 import Pause from 'material-ui/svg-icons/av/pause';
+import WorkIcon from 'material-ui/svg-icons/hardware/laptop';
+import BreakIcon from 'material-ui/svg-icons/maps/local-cafe.js';
 import CircularProgress from 'material-ui/CircularProgress';
+import MediaQuery from 'react-responsive';
 
 class Countdown extends React.Component {
   constructor(props) {
     super();
 
-    console.log('1');
-    let {workTime, breakTime} = props;
+    let {workTime, breakTime, isDarkTheme} = props;
     const isWorking = true;
     const isRunning = false;
     const timeToSeconds = time => Number(time) * 60;
-    const formatTime = seconds => {
-      (Math.floor(seconds / 60) + '').padStart(2, '0') +
-      ':' + (Math.ceil(seconds % 60) + '').padStart(2, '0');
+    const formatTime = (seconds) => {
+      return (Math.floor(seconds / 60) + '').padStart(2, '0') +
+       ':' + (Math.ceil(seconds % 60) + '').padStart(2, '0');
     };
     const remainingSeconds = timeToSeconds(workTime);
     const formattedTime = formatTime(remainingSeconds);
@@ -29,7 +31,8 @@ class Countdown extends React.Component {
       isRunning,
       timeToSeconds,
       formattedTime,
-      formatTime
+      formatTime,
+      isDarkTheme
     };
 
     this.playPause = this.playPause.bind(this);
@@ -84,9 +87,11 @@ class Countdown extends React.Component {
     const {formatTime, timeToSeconds} = prevState;
     const workTime = nextProps.workTime;
     const breakTime = nextProps.breakTime;
+    const isDarkTheme = nextProps.isDarkTheme;
 
-    console.log(nextProps);
-    console.log(prevState);
+    if (isDarkTheme !== prevState.isDarkTheme) {
+      return {isDarkTheme};
+    }
 
     if (breakTime !== prevState.breakTime) {
       const remainingSeconds = timeToSeconds(breakTime);
@@ -113,31 +118,84 @@ class Countdown extends React.Component {
       remainingSeconds,
       workTime,
       breakTime,
-      formattedTime
+      formattedTime,
+      isDarkTheme
     };
   }
 
   render() {
-    const {isRunning} = this.state;
-    console.log(this.state);
+    const {isRunning, formattedTime, isDarkTheme, isWorking} = this.state;
+    const color = isDarkTheme ? '#FAFAFA' : '#424242';
     return (
       <div className='countdown'>
-        <div>
-          <CircularProgress
-            max={1}
-            min={0}
-            mode='determinate'
-            value={this.progress()}
-          >
-          </CircularProgress>
+        <MediaQuery query='(min-device-width: 1224px)'>
+          <div className='circular-progress'>
+            <CircularProgress
+              max={1}
+              min={0}
+              mode='determinate'
+              value={this.progress()}
+              size={500}
+              color={color}
+            >
+            </CircularProgress>
+          </div>
+          <span style={{fontSize: '2em', color: color}}>Working</span>
+          {isWorking ?
+            <WorkIcon
+              style={{height: '15vh', width: '15vw'}}
+              color={color}
+            /> :
+            <BreakIcon
+              style={{height: '15vh', width: '15vw'}}
+              color={color}
+            />
+          }
+          <br />
+          <span style={{fontSize: '4em',color: color}}>
+            {formattedTime}
+          </span>
+          <FloatingActionButton
+            className='button-action'
+            onClick={this.playPause}
+            >
+            {isRunning ? <Pause /> : <PlayArrow />}
+          </FloatingActionButton>
+        </MediaQuery>
+        <MediaQuery query='(max-device-width: 1223px)'>
+          <div className='circular-progress'>
+            <CircularProgress
+              max={1}
+              min={0}
+              mode='determinate'
+              value={this.progress()}
+              size={250}
+              color={color}
+            >
+            </CircularProgress>
+          </div>
+          <span style={{fontSize: '1.5em', color: color}}>Working</span>
+          {isWorking ?
+            <WorkIcon
+              style={{height: '8vh', width: '8vw'}}
+              color={color}
+            /> :
+            <BreakIcon
+              style={{height: '8vh', width: '8vw'}}
+              color={color}
+            />
+          }
+          <span style={{fontSize: '2em',color: color}}>
+            {formattedTime}
+          </span>
+          <FloatingActionButton
+            className='button-action'
+            onClick={this.playPause}
+            >
+            {isRunning ? <Pause /> : <PlayArrow />}
+          </FloatingActionButton>
+        </MediaQuery>
 
-        </div>
-        <FloatingActionButton
-          className='button-action'
-          onClick={this.playPause}
-          >
-          {isRunning ? <Pause /> : <PlayArrow />}
-        </FloatingActionButton>
       </div>
     );
   }

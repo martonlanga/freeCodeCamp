@@ -3,7 +3,7 @@ import AppBar from 'material-ui/AppBar';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import IconMenu from 'material-ui/IconMenu';
 import IconButton from 'material-ui/IconButton';
-import {white} from 'material-ui/styles/colors';
+import {grey800} from 'material-ui/styles/colors';
 import AlarmIcon from 'material-ui/svg-icons/action/alarm';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import ContentRemove from 'material-ui/svg-icons/content/remove';
@@ -11,12 +11,14 @@ import FloatingActionButton from 'material-ui/FloatingActionButton';
 import Toggle from 'material-ui/Toggle';
 
 const CustomAppBar = (props) => {
-  const {onChangeTime, workTime, breakTime} = props;
+  const {onChangeTime, workTime, breakTime, switchTheme, isDarkTheme} = props;
+  const color = isDarkTheme ? '#424242' : '#FAFAFA';
   return (
     <AppBar
       title='Promodoro Clock'
       className='appbar'
-      iconElementLeft={<AlarmIcon color={white} />}
+      style={{backgroundColor: color}}
+      iconElementLeft={<AlarmIcon color={grey800} />}
       iconElementRight={
         <IconMenu
           iconButtonElement={
@@ -36,7 +38,7 @@ const CustomAppBar = (props) => {
                isWorkTime={false}
                onChangeTime={onChangeTime}
              />
-            <Toggle label='Dark theme' />
+            <Toggle label='Dark theme' onToggle={switchTheme} />
           </div>
         </IconMenu>
       }
@@ -52,30 +54,32 @@ const ChangeTimeButtons = (props) => {
     flexDirection: 'row',
     alignContent: 'center',
     justifyContent: 'space-between',
-    marginBottom: '10px'
+    marginBottom: '10px',
   };
   return (
     <div style={style}>
       <FloatingActionButton
         mini={true}
-        onClick={() => onChangeTime(true, isWorkTime)}
+        onClick={() => onChangeTime(false, isWorkTime)}
+        color='#000'
         >
-        <ContentAdd />
+        <ContentRemove />
       </FloatingActionButton>
+
       <div style={{textAlign: 'center'}}>
         <span style={{fontSize: '0.8em'}}>
           {isWorkTime ? 'Work Time' : 'Break Time'}
         </span>
         <br/>
         <span>
-          {time}
+          {time}:00
         </span>
       </div>
       <FloatingActionButton
         mini={true}
-        onClick={() => onChangeTime(false, isWorkTime)}
+        onClick={() => onChangeTime(true, isWorkTime)}
         >
-        <ContentRemove />
+        <ContentAdd />
       </FloatingActionButton>
     </div>
   );

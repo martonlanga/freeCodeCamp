@@ -6,11 +6,11 @@
   flex-direction: column;
 }
 
-.circle {
-  width: '200px';
-  height: '200px';
-}
-
 .button-action {
   margin-top: 20px;
+}
+
+.circular-progress {
+  transform: rotate(-90deg);
+  position: absolute;
 }

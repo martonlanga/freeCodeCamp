@@ -3,19 +3,19 @@ import Countdown from './Countdown';
 import CustomAppBar from './CustomAppBar';
 import './Promodoro.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
-import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 class Promodoro extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      workTime: '25',
+      workTime: '1',
       breakTime: '2',
+      isDarkTheme: false,
     };
 
     this.changeTime = this.changeTime.bind(this);
+    this.switchTheme = this.switchTheme.bind(this);
   }
 
   componentDidMount() {
@@ -34,24 +34,34 @@ class Promodoro extends React.Component {
     }
   }
 
+  switchTheme() {
+    const {isDarkTheme} = this.state;
+    const newIsDarkTheme = !isDarkTheme;
+    this.setState({
+      isDarkTheme: newIsDarkTheme,
+    });
+  }
+
   render() {
-    const {workTime, breakTime} = this.state;
-    const {changeTime} = this;
+    const {workTime, breakTime, isDarkTheme} = this.state;
+    const {changeTime, switchTheme} = this;
+    const backgroundColor = isDarkTheme ? '#101010' : '#FAFAFA';
 
     return (
-      <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)} >
-      <div className='promodoro'>
-        <CustomAppBar
+      <div className='promodoro' style={{backgroundColor: backgroundColor}}>
+          <CustomAppBar
           onChangeTime={changeTime}
+          switchTheme={switchTheme}
           breakTime={breakTime}
           workTime={workTime}
+          isDarkTheme={isDarkTheme}
         />
-        <Countdown
+          <Countdown
           breakTime={breakTime}
           workTime={workTime}
+          isDarkTheme={isDarkTheme}
         />
-      </div>
-    </MuiThemeProvider>
+        </div>
     );
   }
 }
