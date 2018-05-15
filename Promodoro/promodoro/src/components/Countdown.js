@@ -35,7 +35,7 @@ class Countdown extends React.Component {
       timeToSeconds,
       formattedTime,
       formatTime,
-      isDarkTheme
+      isDarkTheme,
     };
 
     this.playPause = this.playPause.bind(this);
@@ -67,7 +67,7 @@ class Countdown extends React.Component {
       formattedTime: formatTime(remainingSeconds),
     });
 
-    if (remainingSeconds === 0) {
+    if (remainingSeconds <= 0) {
       const {isWorking, workTime, breakTime} = this.state;
       remainingSeconds = isWorking ?
         timeToSeconds(breakTime) : timeToSeconds(workTime);
@@ -102,7 +102,7 @@ class Countdown extends React.Component {
 
   static getDerivedStateFromProps(nextProps, prevState) {
     //TODO if change break time - dont update progress, don't allow less than 0
-    const {formatTime, timeToSeconds} = prevState;
+    const {formatTime, timeToSeconds, isWorking} = prevState;
     const workTime = nextProps.workTime;
     const breakTime = nextProps.breakTime;
     const isDarkTheme = nextProps.isDarkTheme;
@@ -112,22 +112,33 @@ class Countdown extends React.Component {
     }
 
     if (breakTime !== prevState.breakTime) {
-      const remainingSeconds = timeToSeconds(breakTime);
-      const formattedTime = formatTime(remainingSeconds);
-      return {
-        breakTime,
-        remainingSeconds,
-        formattedTime
-
-      };
+      if (isWorking) {
+        return {
+          breakTime,
+        };
+      } else {
+        const remainingSeconds = timeToSeconds(breakTime);
+        const formattedTime = formatTime(remainingSeconds);
+        return {
+          breakTime,
+          remainingSeconds,
+          formattedTime
+        };
+      }
     } else if (workTime !== prevState.workTime) {
-      const remainingSeconds = timeToSeconds(workTime);
-      const formattedTime = formatTime(remainingSeconds);
-      return {
-        workTime,
-        remainingSeconds,
-        formattedTime
-      };
+      if (!isWorking) {
+        return {
+          workTime,
+        };
+      } else {
+        const remainingSeconds = timeToSeconds(workTime);
+        const formattedTime = formatTime(remainingSeconds);
+        return {
+          workTime,
+          remainingSeconds,
+          formattedTime
+        };
+      }
     }
     const remainingSeconds = timeToSeconds(workTime);
     const formattedTime = formatTime(remainingSeconds);
@@ -146,7 +157,8 @@ class Countdown extends React.Component {
     const color = isDarkTheme ? '#FAFAFA' : '#424242';
     const NotificationLogo = isWorking ? WorkLogo : BreakLogo;
     const NotificationTitle = isWorking ? 'Break time over' : 'Work time over';
-    const NotificationBody = isWorking ? 'Start working now' : 'Enjoy your break';
+    const NotificationBody = isWorking ?
+      'Start working now' : 'Enjoy your break';
     return (
       <div className='countdown'>
         <MediaQuery query='(min-device-width: 1224px)'>

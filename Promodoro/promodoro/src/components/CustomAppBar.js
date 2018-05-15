@@ -3,7 +3,6 @@ import AppBar from 'material-ui/AppBar';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import IconMenu from 'material-ui/IconMenu';
 import IconButton from 'material-ui/IconButton';
-import {grey800} from 'material-ui/styles/colors';
 import AlarmIcon from 'material-ui/svg-icons/action/alarm';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import ContentRemove from 'material-ui/svg-icons/content/remove';
@@ -14,7 +13,6 @@ const CustomAppBar = (props) => {
   const {onChangeTime, workTime, breakTime, switchTheme, isDarkTheme} = props;
   const color = isDarkTheme ? '#424242' : '#FAFAFA';
   const textColor = isDarkTheme ? '#FAFAFA' : '#424242';
-  //TODO: change textcolor to light when darktheme + notification
   return (
     <AppBar
       style={{backgroundColor: color}}
@@ -45,6 +43,7 @@ const CustomAppBar = (props) => {
               label='Dark theme'
               onToggle={switchTheme}
               trackSwitchedStyle={{backgroundColor: '#424242'}}
+              toggled={isDarkTheme}
             />
           </div>
         </IconMenu>
