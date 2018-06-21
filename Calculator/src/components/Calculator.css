@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100');
+
+.Calculator {
+  max-width: 600px;
+  display: grid;
+  grid-template-rows: 35vh 65vh;
+  font-family: 'Roboto', sans-serif;
+}
+
+.display-grid {
+  border: 1px solid black;
+}

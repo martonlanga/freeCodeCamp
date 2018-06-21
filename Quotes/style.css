@@ -12,7 +12,7 @@ html, body {
 	height: 100%;
 	width: 100%;
 	margin: auto;
-	background-image: url("src/minimalist.jpg");
+	background-image: url("public/minimalist.jpg");
 	background-size: cover;
 	background-repeat: no-repeat;
 	display: table;
