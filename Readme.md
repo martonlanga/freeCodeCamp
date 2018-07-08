@@ -193,7 +193,7 @@ ___
 
 ### Features
 
- * A "Tldr" for the Wikipedia's Blockchain site
+ * A *TLDR* for the Wikipedia's Blockchain site
 
 
 
