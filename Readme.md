@@ -14,7 +14,7 @@
 
  * Dark theme :heart_eyes:
 
- * Annoying notifications
+ * Notifications
 
 
 
