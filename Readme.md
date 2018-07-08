@@ -1,2 +1,2 @@
 # Promodoro
-https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif
+[Promodoro Gif]http(https://github.com/martonlanga/freeCodeCamp/blob/master/gifs/Promodoro.gif)
