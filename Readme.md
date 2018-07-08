@@ -1,4 +1,4 @@
-# Promodoro | [Demo](demo.link)
+# Promodoro | [Demo](https://martonlanga.github.io/promodoro/)
 
 ![Promodoro Gif](https://github.com/martonlanga/freeCodeCamp/blob/master/gifs/Promodoro.gif)
 
@@ -32,7 +32,7 @@ ___
 
 
 
-# Tic Tac Toe | [Demo](demo.link)
+# Tic Tac Toe | [Demo](https://martonlanga.github.io/tictactoe/)
 
 ![Tic Tac Toe Gif](https://github.com/martonlanga/freeCodeCamp/blob/master/gifs/TicTacToe.gif)
 
@@ -60,7 +60,7 @@ ___
 
 
 
-# Calculator | [Demo](demo.link)
+# Calculator | [Demo](https://martonlanga.github.io/calculator/)
 
 ![Calculator Gif](https://github.com/martonlanga/freeCodeCamp/blob/master/gifs/Calculator.gif)
 
@@ -82,7 +82,7 @@ ___
 
 
 
-# Weather | [Demo](demo.link)
+# Weather | [Demo](https://martonlanga.github.io/weather/)
 
 ![Weather Gif](https://github.com/martonlanga/freeCodeCamp/blob/master/gifs/Weather.gif)
 
@@ -112,7 +112,7 @@ ___
 
 ___
 
-# WikiViewer | [Demo](demo.link)
+# WikiViewer | [Demo](https://martonlanga.github.io/wikiviewer/)
 
 ![WikiViewer Gif](https://github.com/martonlanga/freeCodeCamp/blob/master/gifs/WikiViewer.gif)
 
@@ -135,7 +135,7 @@ ___
 
 
 
-# Quotes | [Demo](link)
+# Quotes | [Demo](https://martonlanga.github.io/quotes/)
 
 ![Quotes Gif](https://github.com/martonlanga/freeCodeCamp/blob/master/gifs/Quotes.gif)
 
@@ -161,7 +161,7 @@ ___
 
 
 
-# Twitch | [Demo](demo.link)
+# Twitch | [Demo](https://martonlanga.github.io/twitch/)
 
 ![Twitch Gif](https://github.com/martonlanga/freeCodeCamp/blob/master/gifs/Twitch.gif)
 
@@ -185,7 +185,7 @@ ___
 
 
 
-# Blockchain | [Demo](demo.link)
+# Blockchain | [Demo](https://martonlanga.github.io/blockchain/)
 
 ![Blockchain Gif](https://github.com/martonlanga/freeCodeCamp/blob/master/gifs/Blockchain.gif)
 
